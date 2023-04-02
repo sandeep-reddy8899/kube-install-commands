@@ -5,7 +5,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-mkidir -p home/ec2-user/eks-cluser-install
+mkidir -p /home/ec2-user/eks-cluser-install
 cd home/ec2-user/eks-cluser-install
 
 
@@ -22,7 +22,7 @@ VALIDATE(){
         exit 1
     else 
         echo -e " $2.. $G success..... $N"
-     fi
+    fi
 }
 
 curl -s "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &>>LOG
@@ -35,3 +35,5 @@ else
     unzip awscliv2.zip &>>LOG
     VALIDATE "unzip Aws cli v2"
 fi
+
+   
