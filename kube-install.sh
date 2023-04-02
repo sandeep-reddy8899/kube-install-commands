@@ -6,7 +6,7 @@ Y="\e[33m"
 N="\e[0m"
 
 mkdir -p /home/ec2-user/eks-cluser-install
-cd home/ec2-user/eks-cluser-install
+cd /home/ec2-user/eks-cluser-install
 
 
 LOG=eks-cluster-install.log
@@ -25,14 +25,14 @@ VALIDATE(){
     fi
 }
 
-curl -s "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &>>LOG
+curl -s "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &>> $LOG
 VALIDATE $? "Dowloaded AWS CLI V2"
 
 aws_floder="aws"
 if [ -d "$aws_folder"]; then 
     echo -e "AWS folder alredy exits ...$Y Skipping unzip $N"
 else 
-    unzip awscliv2.zip &>>LOG
+    unzip awscliv2.zip &>> $LOG
     VALIDATE "unzip Aws cli v2"
 fi
 
