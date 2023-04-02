@@ -22,6 +22,7 @@ VALIDATE(){
         exit 1
     else 
         echo -e " $2.. $G success..... $N"
+     fi
 }
 
 curl -s "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &>>LOG
