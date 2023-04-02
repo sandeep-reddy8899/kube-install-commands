@@ -5,7 +5,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-mkidir -p /home/ec2-user/eks-cluser-install
+mkdir -p /home/ec2-user/eks-cluser-install
 cd home/ec2-user/eks-cluser-install
 
 
@@ -36,4 +36,13 @@ else
     VALIDATE "unzip Aws cli v2"
 fi
 
+./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update &>> $LOG
+VALIDATE $? "Updated AWS CLI V2"
+
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+VALIDATE $? "Dowloaded eksctl command"
+chmod +x /tmp/eksctl
+VALIDATE $? "Added excute permissions to eksctl"
+mv /tmp/eksctl /usr/local/bin
+VALIDATE $? "moved eksctl to bin folder"
    
